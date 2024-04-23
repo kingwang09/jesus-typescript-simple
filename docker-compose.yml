@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  typescript-simple-starter:
+    container_name: typescript-simple-starter
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    restart: always
+    ports:
+      - 6123:6123
+    volumes:
+      - .:/app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    env_file:
+      - .env
+    environment:
+      - ROLE=Crawler
